@@ -14,7 +14,6 @@ fi
 if [ ! -f /vagrant/chef-server-core_12.16.2-1_amd64.deb ]; then
   echo "Downloading the Chef server package..."
   wget -nv -P /vagrant https://packages.chef.io/files/stable/chef-server/12.16.2/ubuntu/16.04/chef-server-core_12.16.2-1_amd64.deb
-
 fi
 
 # install Chef server

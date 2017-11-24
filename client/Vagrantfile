@@ -34,8 +34,18 @@ Vagrant.configure("2") do |config|
   # Bridged networks make the machine appear as another physical device on
   # your network.
   # config.vm.network "public_network"  
-  config.vm.network "public_network", ip: "192.168.59.1", 
-    bridge: "eth1: Broadcom NetLink (TM) Gigabit Ethernet"  
+
+# - This is how it was working on Windows; Server and client
+# - were on seperate networks. They should be on the same network,
+# - by binding to the same network interface (e.g., eth0)
+# -  config.vm.network "public_network", ip: "192.168.59.1", 
+# -    bridge: "eth1: Broadcom NetLink (TM) Gigabit Ethernet" 
+
+# - This works on the Mac  
+  config.vm.network "public_network", 
+    ip: "192.168.0.19",
+    bridge: "en1: Wi-Fi (AirPort)"  
+
 #  config.vm.network "public_network", ip: "10.0.2.17", 
 #    bridge: "eth1: Broadcom NetLink (TM) Gigabit Ethernet"
 
@@ -72,10 +82,10 @@ Vagrant.configure("2") do |config|
   # Puppet, Chef, Ansible, Salt, and Docker are also available. Please see the
   # documentation for more information about their specific syntax and use.
   config.vm.provision "shell", inline: <<-SHELL
-    # apt-get update
+    apt-get update
     # apt-get install -y apache2
 
     # Add hosts file entries
-    echo "192.168.40.1  chef-server" >> /etc/hosts
+    echo "192.168.0.18  chef-server" >> /etc/hosts
   SHELL
 end
