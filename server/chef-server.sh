@@ -29,6 +29,11 @@ if [ ! $(which chef-server-ctl) ]; then
   echo "Creating initial user and organization..."
   chef-server-ctl user-create chefadmin Chef Admin bknop@arbormetrix.com chefadmin --filename /drop/chefadmin.pem
   chef-server-ctl org-create amx "ArborMetrix" --association_user chefadmin --filename arbormetrix-validator.pem
+
+  echo "Installing Chef Management Console..."
+  chef-server-ctl install chef-manage
+  chef-server-ctl reconfigure 
+  chef-manage-ctl reconfigure --accept-license
 fi
 
 echo "Your Chef server is ready!"
