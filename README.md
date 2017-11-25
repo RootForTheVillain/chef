@@ -8,14 +8,14 @@
 `knife cookbook upload learn_chef_apache2`
 
 ### Install SSL cert on client
-```bash
+```
 knife ssl fetch
 knife ssl check
 knife bootstrap chef-client --ssh-user vagrant --sudo --identity-file ~/dev/chef/client/.vagrant/machines/default/virtualbox/private_key --node-name chef-client --run-list 'role[web]'
 ```
 
 ### Bootstrap a new node
-```shell
+```
 knife bootstrap chef-client --ssh-user vagrant --sudo --identity-file ~/dev/chef/client/.vagrant/machines/default/virtualbox/private_key --node-name chef-client --run-list 'recipe[learn_chef_apache2]'
 ```
 
@@ -23,11 +23,13 @@ knife bootstrap chef-client --ssh-user vagrant --sudo --identity-file ~/dev/chef
 `knife cookbook upload <cookbook>`
 
 ### Update a node
-`knife ssh 'name:chef-client' 'sudo chef-client' --ssh-user vagrant --identity-file ~/dev/chef/client/.vagrant/machines/default/virtualbox/private_key --attribute ipaddress`
+```
+knife ssh 'name:chef-client' 'sudo chef-client' --ssh-user vagrant --identity-file ~/dev/chef/client/.vagrant/machines/default/virtualbox/private_key
+```
 
 ### Cookbooks & dependency management
 ```
-~/dev/chef/learn-chefBerksfile
+~/dev/chef/learn-chef
 berks install
 berks upload --no-ssl-verify
 ```

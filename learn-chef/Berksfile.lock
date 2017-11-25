@@ -1,5 +1,6 @@
 DEPENDENCIES
   chef-client
+  tomcat (~> 3.0.0)
 
 GRAPH
   chef-client (9.0.2)
@@ -9,5 +10,6 @@ GRAPH
   cron (5.0.1)
   logrotate (2.2.0)
   ohai (5.2.0)
+  tomcat (3.0.0)
   windows (3.4.0)
     ohai (>= 4.0.0)
