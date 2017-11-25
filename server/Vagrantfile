@@ -71,18 +71,19 @@ Vagrant.configure("2") do |config|
   # Enable provisioning with a shell script. Additional provisioners such as
   # Puppet, Chef, Ansible, Salt, and Docker are also available. Please see the
   # documentation for more information about their specific syntax and use.
+  config.vm.provision "shell", 
+    path: "chef-server.sh"  
+
   config.vm.provision "shell", inline: <<-SHELL
     apt-get update
     # apt-get install -y apache2
 
-    # Add hosts file entries
+    echo "Adding /etc/hosts entries..."
     echo "192.168.0.19  chef-client" >> /etc/hosts
-  SHELL
 
-  config.vm.provision "shell", path: "chef-server.sh"  
-
-  config.vm.provision "shell", inline: <<-SHELL
     echo "Copying /drop/chefadmin.pem to /vagrant/chefadmin.pem..."
     cp /drop/chefadmin.pem /vagrant/chefadmin.pem
-  SHELL  
+
+    echo "Your Chef server is ready!"
+  SHELL
 end

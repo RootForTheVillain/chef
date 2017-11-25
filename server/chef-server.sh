@@ -35,5 +35,3 @@ if [ ! $(which chef-server-ctl) ]; then
   chef-server-ctl reconfigure 
   chef-manage-ctl reconfigure --accept-license
 fi
-
-echo "Your Chef server is ready!"
